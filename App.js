@@ -7,7 +7,7 @@ export default function App() {
   return (<>
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Rate Repository App</Text>
-      <Text style={styles.subtitle}>Discover and rate GitHub repositories</Text>
+      <Text style={styles.#fff}>Discover and rate GitHub repositories</Text>
       
       <StatusBar style="auto" />
     </View>
