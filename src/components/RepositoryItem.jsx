@@ -1,54 +1,64 @@
 import React from 'react';
-import {
- // View,
-  Text,
- // StyleSheet,  
- // StatusBar,
-} from 'react-native';
-
-
-/*const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      marginTop: StatusBar.currentHeight || 0,
-    },
-    item: {
-      backgroundColor: '#f9c2ff',
-      padding: 20,
-      marginVertical: 8,
-      marginHorizontal: 16,
-    },
-    title: {
-      fontSize: 32,
-    },
-  });
-  
-   id: 'reduxjs.redux',
-    fullName: 'reduxjs/redux',
-    description: 'Predictable state container for JavaScript apps',
-    language: 'TypeScript',
-    forksCount: 13902,
-    stargazersCount: 52869,
-    ratingAverage: 0,
-    reviewCount: 0,
-    ownerAvatarUrl: 'https://avatars3.githubusercontent.com/u/13142323?v=4',
-  
-  */
-const RepositoryItem = ({item}) => (
-    //<View style={styles.item}>
-    <>
-      <Text>Full name: {item.fullName}</Text>
-      <Text>Description: {item.description}</Text>
-      <Text>Language: {item.language}</Text>
-      <Text>Stars: {item.stars}</Text>
-      <Text>Forks: {item.forkCount}</Text>
-      <Text>reviews: {item.reviewCount}</Text>
-      <Text>rating: {item.ratingAverage}</Text>
-            
-      </>
-    //</View>
+import { View, Text,Image,StyleSheet} from 'react-native';
+const styles = StyleSheet.create({
+  language: {
+    color: 'white',
+    backgroundColor: 'blue',
+    padding: 4,
+    borderRadius: 7,
+    marginTop: 10,
+    marginBottom: 10,
+    width: 111,
     
-  );
+  },
+  text: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '800',
+    textAlign: 'left',
+  },
+  img:{
+    padding:4,
+    width: 50, 
+    height: 50, 
+    borderRadius: 5
+  },
+  stats:{
+    flexDirection: 'row',
+    padding: 1,
+    //justifyContent: 'space-around',
+    //backgroundColor: 'lightgrey',
+    borderRadius: 5,
+    flexFlow: 'column wrap',
 
+  },
+});
+const round = (num) => {
+    return num>1000 ? Math.round(num/100)/10+"k" : num
+  }
+const Stat = ({label, value}) => (
+  <View style={{alignItems: 'center'}}>
+    <Text>{value}</Text>
+    <Text style={{padding:5, color:"grey"}}>{label}</Text>
+  </View>
+);
+const RepositoryItem = ({item}) => ( 
+    
+  <View style={{flexDirection: 'row', padding:10, backgroundColor:"white", borderWidth:1, borderColor:"grey"}}>
+    <Image source={{uri: item.ownerAvatarUrl}} style={styles.img} />    
+  <View>
+    <Text style={{ padding:10}}>{item.fullName}</Text>
+    <Text style={{padding:10,fontSize:10, }}>{item.description}</Text>
+    <Text style={styles.language}>{item.language}</Text>
+  <View style={styles.stats}>
+    <Stat value={round(item.stargazersCount)} label="Stars"/>
+    <Stat value={round(item.forksCount)} label="Forks"/>
+    <Stat value={round(item.reviewCount)} label="rev."/>
+    <Stat value={round(item.ratingAverage)} label="Rating"/>
+  </View>
+   
+    </View>
+  </View>
+);
 
 export default RepositoryItem
