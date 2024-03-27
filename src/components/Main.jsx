@@ -2,26 +2,31 @@
 import { /*Text,*/ StyleSheet, View } from 'react-native';
 import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
-
+import { Route, Routes, Navigate, NativeRouter } from 'react-router-native';
+import SignIn from './SignIn';
 
 const styles = StyleSheet.create({
   container: {
     //marginTop: Constants.statusBarHeight,
-    flexGrow: 1,
-    flexShrink: 1,
+    //flexGrow: 1,
+    //flexShrink: 1,
     backgroundColor: 'lightgrey',
   },
-  text: {    color: 'cyan',    fontSize: 20,    fontWeight: '300',  },
+
 });
 
 const Main = () => {
   return (
-    <View style={styles.container}>
-      <AppBar/>
-      {/*<Text style={{ color: 'blue', fontSize: 24, fontWeight: '700' }}>BLUE</Text>
-      <Text style={styles.text}>cyan</Text>*/}
-      <RepositoryList/>
-    </View>
+    <NativeRouter>
+      <View style={styles.container}>
+        <AppBar />
+        <Routes>
+          <Route path="/" element={<RepositoryList />} />
+          <Route path="/login" element={<SignIn />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </View>
+    </NativeRouter>
   );
 };
 
