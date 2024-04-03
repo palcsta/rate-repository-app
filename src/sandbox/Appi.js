@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Pressables from './Pressables';  
 import Link from './Link';  
 import {ActionSheetIOS} from 'react-native';
-import {Platform, View, TextInput, Button, FlatList, Text,StyleSheet,  Pressable, Alert } from 'react-native';
+import {Platform, View, TextInput, Button, FlatList, Text,StyleSheet,  /*Pressable, Alert*/ } from 'react-native';
 const styles = StyleSheet.create({
 
   container: {
