@@ -1,4 +1,4 @@
-import { View, StyleSheet, Pressable, Text, Alert ,ScrollView} from 'react-native';
+import { View, StyleSheet,  Text, Platform, /*Alert ,Pressable,*/ScrollView} from 'react-native';
 import Constants from 'expo-constants';
 import { Link } from "react-router-native";
 
@@ -13,9 +13,20 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 1,
+    
   },
-  text: {
-    color: 'white',
+  text: {    
+    color: Platform.select({
+      android: 'green',
+      ios: 'cyan',
+      default: 'black',
+    }),
+    fontFamily: Platform.select({
+      android: 'Roboto',
+      ios: "Arial",
+      default: 'sans-serif',
+    }),
+
     fontSize: 20,
     fontWeight: '300',
     textAlign: 'left',
